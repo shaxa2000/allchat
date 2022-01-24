@@ -14,17 +14,14 @@ func checkErr(err error) {
 
 func Router() {
 
-	// port := os.Getenv("PORT")
-
-	// if port == "" {
-	// 	log.Fatal("$PORT must be set")
-	// }
-
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", viewHandler)
 	mux.HandleFunc("/chatPage", chatHandler)
 	mux.HandleFunc("/chatPage/chatCreate", chatCreate)
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", "8080"), mux)
+	// stripPrefix := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
+	// mux.Handle("/static", stripPrefix)
+
+	err := http.ListenAndServe(fmt.Sprintf(":%s", "5000"), mux)
 	checkErr(err)
 }
