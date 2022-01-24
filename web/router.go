@@ -1,9 +1,10 @@
 package web
 
 import (
-	"flag"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func checkErr(err error) {
@@ -12,19 +13,19 @@ func checkErr(err error) {
 	}
 }
 
-var addr = flag.String("addr", ":8080", "http service address")
-
 func Router() {
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", viewHandler)
 	mux.HandleFunc("/chatPage", chatHandler)
 	mux.HandleFunc("/chatPage/chatCreate", chatCreate)
 
-	// stripPrefix := http.StripPrefix("/static/", http.FileServer(http.Dir("./static/")))
-	// mux.Handle("/static", stripPrefix)
-
-	// err := http.ListenAndServe(fmt.Sprintf(":%s", "5000"), mux)
-	err := http.ListenAndServe(*addr, mux)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", "8080"), mux)
 	checkErr(err)
 }
