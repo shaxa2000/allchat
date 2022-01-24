@@ -1,0 +1,21 @@
+body{
+    max-width: 1920px;
+}
+
+
+.container{
+    margin: 0 auto;
+    background-color: blanchedalmond;
+}
+
+.chatWindow{
+    margin: 0 auto;
+    padding: 10px;
+    height: 700px;
+    width: 800px;
+    background-color: blanchedalmond;
+    border: black solid 2px;
+    border-radius: 5px;
+
+
+}

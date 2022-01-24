@@ -1,0 +1,38 @@
+{{template "base" .}}
+{{define "title"}}Chat Page{{end}}
+
+{{define "chatPage"}}
+
+<div class="chat">
+    <h3 class="title">Bisharalar Chat Group</h3>
+    <div class="chatWindow">
+        {{range .History}}
+        <p>{{ .}}</p>
+        {{else}}
+        <p>History is empty</p>
+        {{end}}
+    </div>
+    <br>
+
+    
+
+
+    <div class="form">
+        <form action="/chatPage/chatCreate" method="post">
+            <select class="select" name="userNames" id="">
+                <option value="Rozik">Rozik</option>
+                <option value="Danya">Danya</option>
+                <option value="Zavr">Zavr</option>
+                <option value="Shaxa(admin)" placeholder= "если ты не админ но все равно выбериш это то ты п****р">Shaxa(admin)</option>
+            </select>
+            <input type="text" autofocus class="textInput" name="textMessage" placeholder="enter message">
+            <button class="sendButton">send</button>
+            <a class="reloadButton" href="/chatPage">reload</a>
+        </form>
+
+    </div>
+</div>
+
+
+{{end}}
+
