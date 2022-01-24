@@ -26,6 +26,6 @@ func Router() {
 	mux.HandleFunc("/chatPage", chatHandler)
 	mux.HandleFunc("/chatPage/chatCreate", chatCreate)
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", "8080"), mux)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), mux)
 	checkErr(err)
 }
